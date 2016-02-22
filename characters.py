@@ -27,6 +27,7 @@ class Character():
         if self.hp <= 0:
             print("{} has been killed!".format(self.name))
             return True
+            # True means the character is dead
         else:
             print("{} has lost {} health".format(self.name, damage))
             return False
@@ -42,13 +43,13 @@ class Player(Character):
         user_pick = input ("You have been called into the forgery. Pick a weapon (1, 2, 3)")
         if user_pick == "1":
             self.attack_power += 20
-            print("You have chosen the Dwarven-forged battle axe Jarnbjorn, Wrecker of Worlds as your weapon")
-        if input == "2":
+            print("You have chosen the Dwarven-forged battle axe Jarnbjorn, Wrecker of Worlds as your weapon. Your attack power has increased by 20 points")
+        if user_pick == "2":
             self.attack_power += 15
-            print("You have donned Megingjord, the belt of strength")
-        if input == "3":
+            print("You have donned Megingjord, the belt of strength. Your attack power has increased by 15 points")
+        if user_pick == "3":
             self.attack_power += 50 
-            print("You have chosen Mjolnir, imbued with the might of Thor and created using the core of a star")
+            print("You have chosen Mjolnir, imbued with the might of Thor and created using the core of a star. Your attack power has increased by 50")
 
 
 class Destroyer_Armor(Character):
@@ -132,7 +133,27 @@ c.game()
 
 """
 
+father_or_self_choice = input("""You have been informed that the Frost Giants 
+    have violated the peace treaty set forth by your father. Do you speak to your father (1) or 
+    Take matters into your own hands (2)""")
+if father_or_self_choice == "1":
+    print("Your father dismisses your concern. You decide to take matters into your hands")
+if father_or_self_choice == "2":
+    print("You gather a band of warriors and creep into the the Frost Giant's territory")
+
+
+
 user = Player("test_user1", 30, 100)
+user.pick_weapon()
 enemy = Destroyer_Armor()
-enemy.take_damage(user.attack())
-user.take_damage(enemy.attack())
+
+
+
+# # Battle happens here. Battle uses while loop
+# while:
+#     enemy_killed = enemy.take_damage(user.attack())
+#     user_killed = user.take_damage(enemy.attack())
+#     # attack is ongoing until some condition is met 
+# # Battle ends, either enemy or user is killed
+# while enemy_killed:
+
