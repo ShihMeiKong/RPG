@@ -1,10 +1,10 @@
 import random
 
-class Character():
-    def __init__(self, name, hp, attack_power):
+class Character:
+    def __init__(self, name, hp, ap, score=0):
         self.name = name
         self.hp = hp
-        self.attack_power = 1
+        self.ap = ap
         self.score = 0
 
     def attack(self):
@@ -52,94 +52,93 @@ class Player(Character):
             print("You have chosen Mjolnir, imbued with the might of Thor and created using the core of a star. Your attack power has increased by 50")
 
 
-class Destroyer_Armor(Character):
-    def __init__(self):
-        self.name = "Destroyer Armor"
-        self.hp = 5
-        self.attack_power = 5
-        self.score = 0
+class Enemy(Character):
+    def __init__(self, name, hp, ap, score=0):
+        super().__init__(name, hp, ap, score)
+        # self.name = name
+        # self.hp = hp
+        # self.ap = ap
+        # self.score = score
+    
+class Game:
 
-class Amora(Character):
-    def __init__(self):
-        self.name = "Amora the Enchantress"
-        self.hp = 10
-        self.attack_power = 10
-        self.score = 0
+    def play(self):
+        choice = ""
+        while choice not in ['quit','exit','Quit']:
+            enemies_template = [
+                {'name' : 'Destroyer_Armor', "hp" : 5 , "ap": 5}, 
+                {'name' : 'Amora', 'hp' : 10 , "attack_power": 10}, 
+                {'name' : 'Absorbing_Man', "hp" : 15, "attack_power": 15},
+                {'name' : 'Absorbing_Man', "hp" : 15, "attack_power": 15}
+            ]
+            random_index = random.randint(0,len(enemy_template) - 1)
+            enemy_attributes = enemies_template[random_index]
+            enemy = Enemy(**enemy_attributes)
+            print(enemy_attributes)
+            print(enemy_attributes['name'])
 
-class Absorbing_Man(Character):
-    def __init__(self):
-        self.name = "Absorbing Man"
-        self.hp = 15
-        self.attack_power = 15
-        self.score = 0
- 
-"""
-SK: Let's work on a game plan on Monday for the below functions
 
-def game(self):
-        # every function in Py needs 'self'
-        # we need to ramdomly select enemies (call for random funct)
+
+#         # Want to be able to ramdomly select enemies (call for random funct)
         
-        running = True
-        while running ==True:
-            enemy = self.enemy_list[random.randint(0,len(self.enemy_list) - 1)]
+#         running = True
+#         while running == True:
+#             
+#             # need to create a choice for the player/ Thor: boolean 
 
-            # need to create a choice for the player/ Thor: boolean 
-
-            to_fight_or_not = True
-            fighting = True
-            while to_fight_or_not == True:
-                choice = input("Do you want to fight this enemy? (y/n)")
-                if choice == "y":
-                    fighting = True
-                    to_fight_or_not = False
-                elif choice == "n":
-                    fighting = False
-                    to_fight_or_not = False
-                else:
-                    print("Try again")
-
-
-            # next, after y/n, we need to do the reaction outside the loop
-            if fighting == True:
+#             to_fight_or_not = True
+#             fighting = True
+#             while to_fight_or_not == True:
+#                 choice = input("Do you want to fight this enemy? (y/n)")
+#                 if choice == "y":
+#                     fighting = True
+#                     to_fight_or_not = False
+#                 elif choice == "n":
+#                     fighting = False
+#                     to_fight_or_not = False
+#                 else:
+#                     print("Try again")
 
 
+#             # next, after y/n, we need to do the reaction outside the loop
+#             if fighting == True:
 
-#create a list of dictionaries = enemies
-        Enemies_template = [{'name' : 'Destroyer_Armor', "points" : 5 }, {'name' : 'Amora', 'points' : 10 }, 'name' : 'Absorbing_Man', "points" : 15]
+
+
+# #create a list of dictionaries = enemies
+#         
         
 
-        # create list of enemies 
-        self.enemy_list = []
-        # need to assign point value for each enemy
+#         # create list of enemies 
+#         self.enemy_list = []
+#         # need to assign point value for each enemy
         
-        for x in Enemies_template:
-            self.enemy_list.append(Enemies(name=x["name"], points = x["points"]))
-            #gives the ability to define enemies
+#         for x in Enemies_template:
+#             self.enemy_list.append(Enemies(name=x["name"], points = x["points"]))
+#             #gives the ability to define enemies
 
 
-counting_points = 0    #calculate game points
+# counting_points = 0    #calculate game points
                 
-                counting_points += enemy.get_points() - damage.get_points()
-                print(self.player.add_points(counting_points)) #player we declared to add game points
+#                 counting_points += enemy.get_points() - damage.get_points()
+#                 print(self.player.add_points(counting_points)) #player we declared to add game points
 
 
-            else:
-                running = False
+#             else:
+#                 running = False
 
-c = Controller()
-c.game()
-#activate game
+# c = Controller()
+# c.game()
+# #activate game
 
-"""
 
-father_or_self_choice = input("""You have been informed that the Frost Giants 
-    have violated the peace treaty set forth by your father. Do you speak to your father (1) or 
-    Take matters into your own hands (2)""")
-if father_or_self_choice == "1":
-    print("Your father dismisses your concern. You decide to take matters into your hands")
-if father_or_self_choice == "2":
-    print("You gather a band of warriors and creep into the the Frost Giant's territory")
+# father_or_self_choice = input("""You have been informed that the Frost Giants 
+#     have violated the peace treaty set forth by your father. Do you speak to your father (1) or 
+#     Take matters into your own hands (2)""")
+# if father_or_self_choice == "1":
+#     print("Your father dismisses your concern. You decide to take matters into your hands")
+# if father_or_self_choice == "2":
+#     print("You gather a band of warriors and creep into the the Frost Giant's territory")
 
 
 
@@ -149,11 +148,11 @@ enemy = Destroyer_Armor()
 
 
 
-# # Battle happens here. Battle uses while loop
-# while:
-#     enemy_killed = enemy.take_damage(user.attack())
-#     user_killed = user.take_damage(enemy.attack())
-#     # attack is ongoing until some condition is met 
-# # Battle ends, either enemy or user is killed
-# while enemy_killed:
+# Battle happens here. Battle uses while loop
+while:
+    enemy_killed = enemy.take_damage(user.attack())
+    user_killed = user.take_damage(enemy.attack())
+    # attack is ongoing until some condition is met 
+# Battle ends, either enemy or user is killed
+while enemy_killed:
 
