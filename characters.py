@@ -7,7 +7,6 @@ class Character:
     hp = health points
     atk = attack points
     score = initial score, defaults to zero
-
     """
 
     def __init__(self, name, hp, atk, score=0):
@@ -98,21 +97,21 @@ class Battle:
                 return enemy
 
 
-# class Game:
+class Game:
 
-#     def play(self):
-#         choice = ""
-#         while choice not in ['quit', 'exit', 'Quit']:
-#             enemies_template = [
-#                 {'name': 'Destroyer_Armor', "hp": 5, "atk": 5},
-#                 {'name': 'Amora', 'hp': 10, "atk": 10},
-#                 {'name': 'Absorbing_Man', "hp": 15, "atk": 15},
-#             ]
-#             random_index = random.randint(0, len(enemies_template))
-#             enemy_attributes = enemies_template[random_index]
-#             enemy = Enemy(**enemy_attributes)
-#             # print(enemy_attributes)
-#             # print(enemy_attributes['name'])
+    def play(self):
+        choice = ""
+        while choice not in ['quit', 'exit', 'Quit']:
+            enemies_template = [
+                {'name': 'Destroyer_Armor', "hp": 5, "atk": 5},
+                {'name': 'Amora', 'hp': 10, "atk": 10},
+                {'name': 'Absorbing_Man', "hp": 15, "atk": 15},
+            ]
+            random_index = random.randint(0, len(enemies_template))
+            enemy_attributes = enemies_template[random_index]
+            enemy = Enemy(**enemy_attributes)
+            print(enemy)
+            # print(enemy_attributes['name'])
 
 #     def battle(self):
 #         pass
@@ -126,6 +125,7 @@ class Battle:
 #         # create list of enemies
 #         self.enemy_list = []
 #         # need to assign point value for each enemy
+
 
 #         for x in Enemies_template:
 #             self.enemy_list.append(Enemies(name=x["name"], points = x["points"]))
