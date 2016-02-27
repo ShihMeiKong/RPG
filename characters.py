@@ -1,6 +1,13 @@
 import random
 
 class Character:
+    """
+    name = name of character
+    hp = health points
+    atk = attack points
+    score = initial score, defaults to zero
+    """
+    
     def __init__(self, name, hp, ap, score=0):
         self.name = name
         self.hp = hp
@@ -59,7 +66,29 @@ class Enemy(Character):
         # self.hp = hp
         # self.ap = ap
         # self.score = score
-    
+
+
+class Battle:
+    def __init__(self, name, hp, atk, score=0):
+        self.name = name
+        self.hp = hp
+        self.atk = atk
+        self.score = score
+
+    def fight(user, enemy):
+        user.is_dead() = False
+        enemy.is_dead() = False
+    while not user.is_dead and not enemy.is_dead:
+        is_user_dead = user.damage(enemy.attack())
+        is_enemy_dead = enemy.damage(user.attack())
+
+    def win(user, enemy):
+        if user.hp > enemy.hp:
+            winner = user
+        else:
+            winner = enemy
+
+
 class Game:
 
     def play(self):
