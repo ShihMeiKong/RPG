@@ -39,3 +39,14 @@ class View:
             Thor’s friends into turning against him, and has often tricked others into acting as
             her agents. (Press 'Enter' to continue)""")
         print()
+        input("""
+            Are you ready to begin the journey as Thor and battle enemies of an immense scale from the worlds of Norse mythology to save Asgard? (Press 'Enter' to continue)""")
+    
+        print()
+        input("""
+            May the Gods be with you! (Press 'Enter' to continue)""")
+        
+
+view = View()
+view.backstory()
+

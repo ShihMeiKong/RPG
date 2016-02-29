@@ -59,13 +59,10 @@ class Game:
 #                 counting_points += enemy.get_points() - damage.get_points()
 #                 print(self.player.add_points(counting_points)) #player we declared to add game points
 
+# 
 
-#             else:
-#                 running = False
 
-# c = Controller()
-# c.game()
-# #activate game
+
 view = View()
 view.backstory()
 game = Game()

@@ -12,8 +12,15 @@ class Character:
     def __init__(self, name, hp, atk, score=0):
         self.name = name
         self.hp = hp
+        self.max_health = hp
         self.atk = atk
         self.score = score
+
+
+    #after each battle we need to reset health (to make sure there're hp points left)
+    def heal(self):
+        self.hp = self.max_health
+    
 
     def attack(self):
         """
@@ -67,5 +74,5 @@ class Enemy(Character):
     pass
     # self.name = name
     # self.hp = hp
-    # self.ap = ap
+    # self.atk = atk
     # self.score = score

@@ -5,6 +5,7 @@ class Character:
     """
     name = name of character
     hp = health points
+    max_health = hp 
     atk = attack points
     score = initial score, defaults to zero
     """
@@ -43,7 +44,7 @@ class Character:
 
     def add_points(self, amount): # calculate function for adding game points
         self.score += amount
-        return self.score   # used to display the final game points score
+        return self.score   # to display the final game points score
 
 
 class Player(Character):
@@ -66,10 +67,10 @@ class Player(Character):
 class Enemy(Character):
     def __init__(self, name, hp, atk, score=0):
         super().__init__(name, hp, atk, score)
-        # self.name = name
-        # self.hp = hp
-        # self.ap = ap
-        # self.score = score
+        self.name = name
+        self.hp = hp
+        self.atk = atk
+        self.score = score
 
 
 class Battle:
@@ -79,6 +80,8 @@ class Battle:
         Takes two instances of Character class a user and an enemy combatants.
         Returns the winner.
         """
+        if (self.hp > 0):
+
         if enemy.is_dead():
             print("The enemy has died")
             return user
@@ -97,6 +100,27 @@ class Battle:
                 return enemy
 
 
+
+    def battle(player, enemy):
+        print ("An enemy {0.name} appears...".format(enemy))
+
+        # Combat loop
+        while player.hp > 0 and enemy.hp > 0:
+        player.attack(enemy)
+        print("The health of the {0.name} is now {0.health}.".format(enemy))
+        if enemy.health <= 0:
+            break
+        enemy.attack(player)
+        print("Your health is now {0.health}.".format(player))
+
+    # Display outcome
+        if player.health > 0:
+        print("You killed the {0.name}.".format(enemy))
+        elif enemy.health > 0:
+        print("The {0.name} killed you.".format(enemy))
+
+
+
 class Game:
 
     def play(self):
@@ -113,37 +137,19 @@ class Game:
             print(enemy)
             # print(enemy_attributes['name'])
 
-#     def battle(self):
-#         pass
-# #             # next, after y/n, we need to do the reaction outside the loop
-# #             if fighting == True:
 
-# #create a list of dictionaries = enemies
 #
-
-
-#         # create list of enemies
-#         self.enemy_list = []
-#         # need to assign point value for each enemy
-
-
-#         for x in Enemies_template:
-#             self.enemy_list.append(Enemies(name=x["name"], points = x["points"]))
-#             #gives the ability to define enemies
+#   for x in Enemies_template:
+#       self.enemy_list.append(Enemies(name=x["name"], points = x["points"]))
+  
+## gives the ability to define enemies
 
 
 # counting_points = 0    #calculate game points
 
 #                 counting_points += enemy.get_points() - damage.get_points()
-#                 print(self.player.add_points(counting_points)) #player we declared to add game points
+#                 print(self.player.add_points(counting_points)) 
 
-
-#             else:
-#                 running = False
-
-# c = Controller()
-# c.game()
-# #activate game
 
 
 user = Player("test_user1", 30, 100)
